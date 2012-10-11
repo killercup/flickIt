@@ -1,39 +1,30 @@
-Flickable
+flickIt
 =========
 
-Flickable is a simple Javascript library for creating iOS-style flickable galleries on touch-enabled devices.
+flickIt is a simple jQuery/Zepto plugin for creating iOS-style flickable galleries on touch-enabled devices. It is based on [Flickable](https://github.com/BoostCommunications/Flickable).
 
 Demo
 ----
 
-A demo can be viewed at [flickable.aurlien.net](http://flickable.aurlien.net).
+A demo of the original project [Flickable](https://github.com/BoostCommunications/Flickable) can be viewed at [flickable.aurlien.net](http://flickable.aurlien.net).
 
 Usage
 -----
 
-The library provides a single function, `Flickable`, which takes two arguments:
-
-1. A selector for the flickables
-2. A settings object
-
-The matched element(s) should contain a second element, which should contain the actual slides. The slides must be of the exact same width, and should be of the same height (for aestethic reasons).
-
-The file `flickable.css` contains the recommended CSS rules for the flickable elements.
-
-Simple usage:
-
-    <div class="flickable">
-        <ul>
+```html
+    <div>
+        <ul class="flickable">
             <li>First</li>
             <li>Second</li>
             <li>Third</li>
         </ul>
     </div>
     <script type="text/javascript">
-        Flickable('.flickable', {
+        $('.flickable').flickIt({
             width: 320
         });
     </script>
+```
 
 Settings reference
 ------------------
