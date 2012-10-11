@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=320 initial-scale=1.0 maximum-scale=1.0 user-scalable=0" />
     <title>Flickable</title>
-    <script src="flickable.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+    <script src="flickIt.js" type="text/javascript"></script>
     <link rel="stylesheet" href="flickable.css" type="text/css" media="screen">
     <style type="text/css" media="screen">
         body {
@@ -43,8 +44,8 @@
 </head>
 <body>
 
-    <div class="flickable">
-        <ul>
+    <div class="container">
+        <ul class="flickable">
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
@@ -53,19 +54,19 @@
             <li>Six</li>
         </ul>
     </div>
-    
-    <div class="flickable">
-        <ul>
+
+    <div class="container">
+        <ul class="flickable">
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
             <li>Four</li>
         </ul>
     </div>
-    
+
     <script type="text/javascript">
-        Flickable('.flickable', {
-            width: 320,
+        $('.flickable').flickIt({
+            width: 300,
             enableMouseEvents: true,
             callback: function(n) {
                 if (window.console) {
@@ -74,8 +75,10 @@
             }
         });
     </script>
-    
-    <p><a href="https://github.com/BoostCommunications/Flickable">View code on Github</a></p>
-    
+
+    <p class="container">
+        <a href="https://github.com/killercup/flickIt">View code on Github</a>
+    </p>
+
 </body>
 </html>

@@ -1,3 +1,14 @@
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.container {
+    margin: 20px 10px;
+    overflow: hidden;
+}
+
 /* Flickable wrapper */
 .flickable {
     overflow: hidden;
@@ -6,7 +17,7 @@
 }
 
 /* Scrolling container */
-.flickable > * {
+.flickable {
     display: block;
     list-style-type: none;
     margin: 0;
@@ -14,7 +25,7 @@
 }
 
 /* Flickable items */
-.flickable > * > * {
+.flickable > * {
     display: block;
     float: left;
     margin: 0;
@@ -38,6 +49,6 @@
 }
 
 /* Active item indicator */
-.flickableIndicator span.flickableIndicatorActive {
+.flickableIndicator .flickableIndicatorActive {
     background-color: #666;
 }
