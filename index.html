@@ -1,18 +1,19 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Flickit by killercup</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/flickable.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+<body>
     <div class="wrapper">
       <header>
         <h1>Flickit</h1>
@@ -25,18 +26,36 @@
           <li><a href="https://github.com/killercup/flickIt/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/killercup/flickIt/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/killercup/flickIt">View On <strong>GitHub</strong></a></li>
+      </ul>
+  </header>
+  <section>
+    <h1>flickIt</h1>
+
+    <p>flickIt is a simple jQuery/Zepto plugin for creating iOS-style flickable galleries on touch-enabled devices. It is based on <a href="https://github.com/BoostCommunications/Flickable">Flickable</a>.</p>
+
+    <h2>Demo</h2>
+
+    <div class="container">
+        <ul class="flickable">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>Six</li>
         </ul>
-      </header>
-      <section>
-        <h1>flickIt</h1>
+    </div>
 
-<p>flickIt is a simple jQuery/Zepto plugin for creating iOS-style flickable galleries on touch-enabled devices. It is based on <a href="https://github.com/BoostCommunications/Flickable">Flickable</a>.</p>
+    <div class="container">
+        <ul class="flickable">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+        </ul>
+    </div>
 
-<h2>Demo</h2>
-
-<p>A demo of the original project <a href="https://github.com/BoostCommunications/Flickable">Flickable</a> can be viewed at <a href="http://flickable.aurlien.net">flickable.aurlien.net</a>.</p>
-
-<h2>Usage</h2>
+    <h2>Usage</h2>
 
 <div class="highlight"><pre>    <span class="nt">&lt;div&gt;</span>
         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"flickable"</span><span class="nt">&gt;</span>
@@ -52,46 +71,61 @@
     <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
-<h2>Settings reference</h2>
+    <h2>Settings reference</h2>
 
-<ul>
-<li>
-<code>width</code>: The width of each item, including margin, padding and border. Use 'screen' to auto-fit and resize with screen. <strong>Default:</strong> <code>'screen'</code>
-</li>
-<li>
-<code>offset</code>: Which item to start at. <strong>Default:</strong> <code>0</code>
-</li>
-<li>
-<code>enableMouseEvents</code>: Whether to enable mouse events (useful for testing). <strong>Default:</strong> <code>false</code>
-</li>
-<li>
-<code>showIndicators</code>: Whether to show indicators for which item is selected. <strong>Default:</strong> <code>true</code>
-</li>
-<li>
-<code>showButtons</code>: Whether to show next/previous-buttons for devices that support touch events. <strong>Default:</strong> <code>false</code>
-</li>
-<li>
-<code>nextButtonText</code>: Text for next-button. <strong>Default:</strong> <code>'Next'</code>
-</li>
-<li>
-<code>prevButtonText</code>: Text for previous-button. <strong>Default:</strong> <code>'Previous'</code>
-</li>
-<li>
-<code>indicatorClass</code>: The class name for the indicator wrapper element. <strong>Default:</strong> <code>'flickableIndicator'</code>
-</li>
-<li>
-<code>activeIndicatorClass</code>: The class name for the active indicator element. <strong>Default:</strong> <code>'flickableIndicatorActive'</code>
-</li>
-<li>
-<code>callback</code>: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed) as a parameter.</li>
-</ul><p><em>Licensed under the MIT license: <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></em></p>
-      </section>
-      <footer>
+    <ul>
+        <li>
+            <code>width</code>: The width of each item, including margin, padding and border. Use 'screen' to auto-fit and resize with screen. <strong>Default:</strong> <code>'screen'</code>
+        </li>
+        <li>
+            <code>offset</code>: Which item to start at. <strong>Default:</strong> <code>0</code>
+        </li>
+        <li>
+            <code>enableMouseEvents</code>: Whether to enable mouse events (useful for testing). <strong>Default:</strong> <code>false</code>
+        </li>
+        <li>
+            <code>showIndicators</code>: Whether to show indicators for which item is selected. <strong>Default:</strong> <code>true</code>
+        </li>
+        <li>
+            <code>showButtons</code>: Whether to show next/previous-buttons for devices that support touch events. <strong>Default:</strong> <code>false</code>
+        </li>
+        <li>
+            <code>nextButtonText</code>: Text for next-button. <strong>Default:</strong> <code>'Next'</code>
+        </li>
+        <li>
+            <code>prevButtonText</code>: Text for previous-button. <strong>Default:</strong> <code>'Previous'</code>
+        </li>
+        <li>
+            <code>indicatorClass</code>: The class name for the indicator wrapper element. <strong>Default:</strong> <code>'flickableIndicator'</code>
+        </li>
+        <li>
+            <code>activeIndicatorClass</code>: The class name for the active indicator element. <strong>Default:</strong> <code>'flickableIndicatorActive'</code>
+        </li>
+        <li>
+            <code>callback</code>: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed) as a parameter.</li>
+        </ul><p><em>Licensed under the MIT license: <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></em></p>
+    </section>
+    <footer>
         <p>This project is maintained by <a href="https://github.com/killercup">killercup</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+<script src="https://github.com/killercup/flickIt/raw/master/flickIt.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function($){
+        $('.flickable').flickIt({
+            width: 300,
+            enableMouseEvents: true,
+            callback: function(n) {
+                if (window.console) {
+                    console.log(n);
+                }
+            }
+        });
+    })
+</script>
+
+</body>
 </html>

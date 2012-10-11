@@ -1,0 +1,83 @@
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Flickable wrapper */
+.flickable {
+    overflow: hidden;
+    clear: both;
+    position: relative;
+}
+
+/* Scrolling container */
+.flickable {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flickable items */
+.flickable > * {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* Item indicator wrapper */
+.flickableIndicator {
+    text-align: center;
+    line-height: 12px;
+}
+
+/* Item indicator */
+.flickableIndicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    margin: 2px 4px;
+    background-color: #ccc;
+}
+
+/* Active item indicator */
+.flickableIndicator .flickableIndicatorActive {
+    background-color: #666;
+}
+
+/* Demo Styles */
+.container {
+    width: 300px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.flickable li {
+    height: 180px;
+    border: 10px solid green;
+    text-align: center;
+    line-height: 180px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ie-box-sizing: border-box;
+         -o-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.flickable li:nth-child(6n+2) {
+    border: 10px solid blue;
+}
+.flickable li:nth-child(6n+3) {
+    border: 10px solid red;
+}
+.flickable li:nth-child(6n+4) {
+    border: 10px solid yellow;
+}
+.flickable li:nth-child(6n+5) {
+    border: 10px solid teal;
+}
+.flickable li:nth-child(6n) {
+    border: 10px solid black;
+}
