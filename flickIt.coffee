@@ -122,7 +122,6 @@
       newTime = prevTime = (new Date()).getTime()
       speed = 0
       @disableAnimation()
-      console.log current
 
       # Reposition gallery based on event
       reposition = (evt) =>
