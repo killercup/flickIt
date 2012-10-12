@@ -6,6 +6,8 @@ flickIt is a simple jQuery/Zepto plugin for creating iOS-style flickable galleri
 Demo
 ----
 
+Have a look at the github page for this project: [killercup.github.com/flickIt](http://killercup.github.com/flickIt/).
+
 A demo of the original project [Flickable](https://github.com/BoostCommunications/Flickable) can be viewed at [flickable.aurlien.net](http://flickable.aurlien.net).
 
 Usage
@@ -38,6 +40,6 @@ Settings reference
 - `prevButtonText`: Text for previous-button. **Default:** `'Previous'`
 - `indicatorClass`: The class name for the indicator wrapper element. **Default:** `'flickableIndicator'`
 - `activeIndicatorClass`: The class name for the active indicator element. **Default:** `'flickableIndicatorActive'`
-- `callback`: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed) as a parameter.
+- `callback`: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed), the container element (jQuery element) and the subselection element (jQuery element, can be the same as container) as parameters. `this` will be set to the FlickIt instance.
 
 _Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php_
