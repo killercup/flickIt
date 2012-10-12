@@ -6,7 +6,7 @@
 }
 
 /* Scrolling container */
-.flickable {
+.flickable > * {
     display: block;
     list-style-type: none;
     margin: 0;
@@ -14,7 +14,7 @@
 }
 
 /* Flickable items */
-.flickable > * {
+.flickable > * > * {
     display: block;
     float: left;
     margin: 0;
@@ -30,6 +30,7 @@
 /* Item indicator */
 .flickableIndicator span {
     display: inline-block;
+    float: none;
     width: 6px;
     height: 6px;
     border-radius: 3px;
@@ -38,7 +39,7 @@
 }
 
 /* Active item indicator */
-.flickableIndicator .flickableIndicatorActive {
+.flickableIndicator span.flickableIndicatorActive {
     background-color: #666;
 }
 

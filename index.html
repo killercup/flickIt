@@ -35,8 +35,8 @@
 
     <h2>Demo</h2>
 
-    <div class="container">
-        <ul class="flickable">
+    <div class="flickable">
+        <ul>
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
@@ -46,8 +46,8 @@
         </ul>
     </div>
 
-    <div class="container">
-        <ul class="flickable">
+    <div class="flickable">
+        <ul>
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
@@ -75,34 +75,47 @@
 
     <ul>
         <li>
-            <code>width</code>: The width of each item, including margin, padding and border. Use 'screen' to auto-fit and resize with screen. <strong>Default:</strong> <code>'screen'</code>
+            <code>width</code>: The width of each item, including margin, padding and border. Use 'screen' to auto-fit and resize with screen.
+            <br/><em>Default:</em> <code>'screen'</code>
         </li>
         <li>
-            <code>offset</code>: Which item to start at. <strong>Default:</strong> <code>0</code>
+            <code>subSelector</code>: The jQuery/Zepto selector used to find the element containing the flickable panes.
+            <br/><em>Default:</em> <code>undefined</code> (will use container)
         </li>
         <li>
-            <code>enableMouseEvents</code>: Whether to enable mouse events (useful for testing). <strong>Default:</strong> <code>false</code>
+            <code>offset</code>: Which item to start at.
+            <br/><em>Default:</em> <code>0</code>
         </li>
         <li>
-            <code>showIndicators</code>: Whether to show indicators for which item is selected. <strong>Default:</strong> <code>true</code>
+            <code>enableMouseEvents</code>: Whether to enable mouse events (useful for testing).
+            <br/><em>Default:</em> <code>false</code>
         </li>
         <li>
-            <code>showButtons</code>: Whether to show next/previous-buttons for devices that support touch events. <strong>Default:</strong> <code>false</code>
+            <code>showIndicators</code>: Whether to show indicators for which item is selected.
+            <br/><em>Default:</em> <code>true</code>
         </li>
         <li>
-            <code>nextButtonText</code>: Text for next-button. <strong>Default:</strong> <code>'Next'</code>
+            <code>showButtons</code>: Whether to show next/previous-buttons for devices that support touch events.
+            <br/><em>Default:</em> <code>false</code>
         </li>
         <li>
-            <code>prevButtonText</code>: Text for previous-button. <strong>Default:</strong> <code>'Previous'</code>
+            <code>nextButtonText</code>: Text for next-button.
+            <br/><em>Default:</em> <code>'Next'</code>
         </li>
         <li>
-            <code>indicatorClass</code>: The class name for the indicator wrapper element. <strong>Default:</strong> <code>'flickableIndicator'</code>
+            <code>prevButtonText</code>: Text for previous-button.
+            <br/><em>Default:</em> <code>'Previous'</code>
         </li>
         <li>
-            <code>activeIndicatorClass</code>: The class name for the active indicator element. <strong>Default:</strong> <code>'flickableIndicatorActive'</code>
+            <code>indicatorClass</code>: The class name for the indicator wrapper element.
+            <br/><em>Default:</em> <code>'flickableIndicator'</code>
         </li>
         <li>
-            <code>callback</code>: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed) as a parameter.</li>
+            <code>activeIndicatorClass</code>: The class name for the active indicator element.
+            <br/><em>Default:</em> <code>'flickableIndicatorActive'</code>
+        </li>
+        <li>
+            <code>callback</code>: A function to be called each time the slide changes. The function will be passed the slide number (zero-indexed), the container element (jQuery element) and the subselection element (jQuery element, can be the same as container) as parameters. `this` will be set to the FlickIt instance.</li>
         </ul><p><em>Licensed under the MIT license: <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></em></p>
     </section>
     <footer>
@@ -111,12 +124,16 @@
     </footer>
 </div>
 <script src="javascripts/scale.fix.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.0rc1/zepto.min.js"></script>
+
 <script src="https://github.com/killercup/flickIt/raw/master/flickIt.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function($){
         $('.flickable').flickIt({
             width: 250,
+            subSelector: 'ul',
             enableMouseEvents: true,
             callback: function(n) {
                 if (window.console) {
