@@ -1,3 +1,13 @@
+/*
+  flickIt by Pascal Hertleif
+  http://killercup.github.com/flickIt/
+
+  Depends on jQuery or Zepto.
+
+  flickIt is a simple jQuery/Zepto plugin for creating iOS-style flickable galleries on touch-enabled devices.
+
+  Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
+*/
 var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 !(function($) {
