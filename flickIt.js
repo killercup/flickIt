@@ -238,11 +238,12 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
     };
 
     FlickIt.prototype.callCallback = function() {
+      var _this = this;
       if (this.settings.callback) {
         return setTimeout((function() {
-          if (this.currentSlide !== this.previousSlide) {
-            this.settings.callback(this.currentSlide);
-            return this.previousSlide = this.currentSlide;
+          if (_this.currentSlide !== _this.previousSlide) {
+            _this.settings.callback.call(_this, _this.currentSlide, _this.$container, _this.$el);
+            return _this.previousSlide = _this.currentSlide;
           }
         }), 200);
       }

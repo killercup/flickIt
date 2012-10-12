@@ -233,9 +233,9 @@
 
     callCallback: ->
       if @settings.callback
-        setTimeout (->
+        setTimeout (=>
           if @currentSlide isnt @previousSlide
-            @settings.callback @currentSlide
+            @settings.callback.call @, @currentSlide, @$container, @$el
             @previousSlide = @currentSlide
         ), 200
 
