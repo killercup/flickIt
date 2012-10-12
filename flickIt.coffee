@@ -25,6 +25,7 @@
 
       if @settings.subSelector?
         @$el = @$container.find(@settings.subSelector)
+        @el = @$el[0] if @$el.length
       else
         @el = @container
 
@@ -32,9 +33,6 @@
       if not @$el.length
         # if not, quit right here
         return
-      else
-        # a regular element has never harmed anyone
-        @el = @$el[0]
 
       if @settings.width is "screen"
         @settings.widthScreen = true
@@ -44,7 +42,10 @@
           clearTimeout @orientationTimeout
           @orientationTimeout = setTimeout(=>
             @settings.width = window.innerWidth
+            @$container.css width: @settings.width
           , 200)
+
+      @$container.css width: @settings.width
 
       if "ontouchstart" of document.createElement("div")
         @events =

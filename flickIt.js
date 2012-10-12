@@ -34,24 +34,27 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       this.previousSlide = this.currentSlide;
       if (this.settings.subSelector != null) {
         this.$el = this.$container.find(this.settings.subSelector);
+        if (this.$el.length) this.el = this.$el[0];
       } else {
         this.el = this.container;
       }
-      if (!this.$el.length) {
-        return;
-      } else {
-        this.el = this.$el[0];
-      }
+      if (!this.$el.length) return;
       if (this.settings.width === "screen") {
         this.settings.widthScreen = true;
         this.settings.width = window.innerWidth;
         window.addEventListener(this.orientationEvent, function(e) {
           clearTimeout(_this.orientationTimeout);
           return _this.orientationTimeout = setTimeout(function() {
-            return _this.settings.width = window.innerWidth;
+            _this.settings.width = window.innerWidth;
+            return _this.$container.css({
+              width: _this.settings.width
+            });
           }, 200);
         });
       }
+      this.$container.css({
+        width: this.settings.width
+      });
       if ("ontouchstart" in document.createElement("div")) {
         this.events = {
           start: "touchstart",
