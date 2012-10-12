@@ -32,6 +32,7 @@ Settings reference
 ------------------
 
 - `width`: The width of each item, including margin, padding and border. Use 'screen' to auto-fit and resize with screen. **Default:** `'screen'`
+- `subSelector`: The jQuery/Zepto selector used to find the element containing the flickable panes. **Default:** `undefined` (will use container)
 - `offset`: Which item to start at. **Default:** `0`
 - `enableMouseEvents`: Whether to enable mouse events (useful for testing). **Default:** `false`
 - `showIndicators`: Whether to show indicators for which item is selected. **Default:** `true`
