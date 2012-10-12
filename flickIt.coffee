@@ -16,12 +16,25 @@
     orientationEvent: (if "onorientationchange" of window then "orientationchange" else "resize")
     orientationTimeout: undefined
 
-    constructor: (@el, options) ->
+    constructor: (@container, options) ->
       @settings = $.extend @settings, options
-      @$el = $(@el)
+      @$container = $(@container)
 
       @currentSlide = @offset = @settings.offset
       @previousSlide = @currentSlide
+
+      if @settings.subSelector?
+        @$el = @$container.find(@settings.subSelector)
+      else
+        @el = @container
+
+      # do we actually have anything?
+      if not @$el.length
+        # if not, quit right here
+        return
+      else
+        # a regular element has never harmed anyone
+        @el = @$el[0]
 
       if @settings.width is "screen"
         @settings.widthScreen = true
@@ -59,9 +72,9 @@
         That way, I always get the right thing and don't care
         if you are using jQuery or Zepto.
       ###
-      @el.addEventListener @events.start, @on_start, false
+      @container.addEventListener @events.start, @on_start, false
 
-      @$el.on 'append', (event) =>
+      @$container.on 'append', (event) =>
         @resetWidths()
         @createIndicators()
 
@@ -93,7 +106,7 @@
       @el.style.transform = "translate3d(" + offset + "px, 0, 0)"
 
       @callCallback()
-      @$el.trigger 'flicked'
+      @$container.trigger 'flicked'
 
     resetWidths: ->
       @subItemCount = @el.children.length
@@ -106,8 +119,8 @@
         # touch event
         i = 0
         j = evt.targetTouches.length
-        sumX = 0
-        sumY = 0
+        sumX = sumY = 0
+
         while i < j
           sumX += evt.targetTouches[i].clientX
           sumY += evt.targetTouches[i].clientY
@@ -168,12 +181,12 @@
         @snapToCurrentSlide true
 
         # Remove drag and end event listeners
-        @el.removeEventListener @events.move, moveEvent, false
-        @el.removeEventListener @events.end, endEvent, false
+        @container.removeEventListener @events.move, moveEvent, false
+        @container.removeEventListener @events.end, endEvent, false
 
       # Set up drag and end event listeners
-      @el.addEventListener @events.move, moveEvent, false
-      @el.addEventListener @events.end, endEvent, false
+      @container.addEventListener @events.move, moveEvent, false
+      @container.addEventListener @events.end, endEvent, false
 
     createIndicators: ->
       if @indicator?
@@ -183,7 +196,7 @@
         # initialize
         @indicator = $("<div class='#{@settings.indicatorClass}'/>")
         @$el.after @indicator
-        @$el.on 'flicked', @updateIndicators
+        @$container.on 'flicked', @updateIndicators
 
       # always add spans
       @$el.children().each (index, element) =>

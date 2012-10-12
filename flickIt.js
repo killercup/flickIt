@@ -23,15 +23,25 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
 
     FlickIt.prototype.orientationTimeout = void 0;
 
-    function FlickIt(el, options) {
+    function FlickIt(container, options) {
       var _this = this;
-      this.el = el;
+      this.container = container;
       this.updateIndicators = __bind(this.updateIndicators, this);
       this.on_start = __bind(this.on_start, this);
       this.settings = $.extend(this.settings, options);
-      this.$el = $(this.el);
+      this.$container = $(this.container);
       this.currentSlide = this.offset = this.settings.offset;
       this.previousSlide = this.currentSlide;
+      if (this.settings.subSelector != null) {
+        this.$el = this.$container.find(this.settings.subSelector);
+      } else {
+        this.el = this.container;
+      }
+      if (!this.$el.length) {
+        return;
+      } else {
+        this.el = this.$el[0];
+      }
       if (this.settings.width === "screen") {
         this.settings.widthScreen = true;
         this.settings.width = window.innerWidth;
@@ -73,8 +83,8 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
               That way, I always get the right thing and don't care
               if you are using jQuery or Zepto.
       */
-      this.el.addEventListener(this.events.start, this.on_start, false);
-      return this.$el.on('append', function(event) {
+      this.container.addEventListener(this.events.start, this.on_start, false);
+      return this.$container.on('append', function(event) {
         _this.resetWidths();
         return _this.createIndicators();
       });
@@ -108,7 +118,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       this.el.style.OTransform = "translateX(" + offset + "px)";
       this.el.style.transform = "translate3d(" + offset + "px, 0, 0)";
       this.callCallback();
-      return this.$el.trigger('flicked');
+      return this.$container.trigger('flicked');
     };
 
     FlickIt.prototype.resetWidths = function() {
@@ -125,8 +135,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       if (evt.targetTouches && evt.targetTouches.length) {
         i = 0;
         j = evt.targetTouches.length;
-        sumX = 0;
-        sumY = 0;
+        sumX = sumY = 0;
         while (i < j) {
           sumX += evt.targetTouches[i].clientX;
           sumY += evt.targetTouches[i].clientY;
@@ -145,7 +154,6 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       newTime = prevTime = (new Date()).getTime();
       speed = 0;
       this.disableAnimation();
-      console.log(current);
       reposition = function(evt) {
         var delta, distanceX, distanceY;
         distanceX = Math.abs(current[0] - origin[0]);
@@ -181,11 +189,11 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
         }
         _this.currentSlide = Math.floor(Math.abs(_this.offset / _this.settings.width));
         _this.snapToCurrentSlide(true);
-        _this.el.removeEventListener(_this.events.move, moveEvent, false);
-        return _this.el.removeEventListener(_this.events.end, endEvent, false);
+        _this.container.removeEventListener(_this.events.move, moveEvent, false);
+        return _this.container.removeEventListener(_this.events.end, endEvent, false);
       };
-      this.el.addEventListener(this.events.move, moveEvent, false);
-      return this.el.addEventListener(this.events.end, endEvent, false);
+      this.container.addEventListener(this.events.move, moveEvent, false);
+      return this.container.addEventListener(this.events.end, endEvent, false);
     };
 
     FlickIt.prototype.createIndicators = function() {
@@ -195,7 +203,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       } else {
         this.indicator = $("<div class='" + this.settings.indicatorClass + "'/>");
         this.$el.after(this.indicator);
-        this.$el.on('flicked', this.updateIndicators);
+        this.$container.on('flicked', this.updateIndicators);
       }
       this.$el.children().each(function(index, element) {
         var span;
