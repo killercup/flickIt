@@ -39,6 +39,7 @@
         @el = @$el[0] if @$el.length
       else
         @el = @container
+        @$el = @$container
 
       # do we actually have anything?
       if not @$el.length
